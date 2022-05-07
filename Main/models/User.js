@@ -1,11 +1,11 @@
-const { Schema, Types } = require('mongoose');
+const { Schema, model } = require('mongoose');
 
 const userSchema = new Schema(
   {
-    userId: {
-      type: Schema.Types.ObjectId,
-      default: () => new Types.ObjectId(),
-    },
+    // userId: {
+    //   type: Schema.Types.ObjectId,
+    //   default: () => new Types.ObjectId(),
+    // },
     name: {
       type: String,
       trim: true,
@@ -18,11 +18,12 @@ const userSchema = new Schema(
       type: String,
       required: true,
       unique: true,
+      match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, "Please enter a valid email address."],
     },
-    createdAt: {
-      type: Date,
-      default: Date.now,
-    },
+    // createdAt: {
+    //   type: Date,
+    //   default: Date.now,
+    // },
     thoughts: [
       {
         type: Schema.Types.ObjectId,
@@ -39,21 +40,26 @@ const userSchema = new Schema(
   {
     toJSON: {
       getters: true,
+      virtuals: true,
     },
     id: false,
   }
 );
 
-const Username = db.model('username', userSchema);
-
-const username = new Username();
-username.save(function(error) {
-  assert.equal(error.errors['name'].message,
-    'Path `name` is required.');
-
-  error = username.validateSync();
-  assert.equal(error.errors['name'].message,
-    'Path `name` is required.');
+userSchema.virtual("friendCount").get(function(){
+  return this.friends.length;
 });
 
-module.exports = userSchema;
+const username = db.model('username', userSchema);
+
+// const username = new Username();
+// username.save(function(error) {
+//   assert.equal(error.errors['name'].message,
+//     'Path `name` is required.');
+
+//   error = username.validateSync();
+//   assert.equal(error.errors['name'].message,
+//     'Path `name` is required.');
+// });
+
+module.exports = username;
