@@ -16,13 +16,17 @@ The application requires [Node.js](https://nodejs.dev/learn/introduction-to-node
 ```bash
 npm i
 ```
+seed the database with:
+```bash
+npm i
+```
 and invoke the program by using:
 
 ```bash
 npm start
 ```
 
-[![Video demo of completed project](images/API-demo.png)](XXX)
+[![Video demo of completed project](main/images/API-demo.png)](https://youtu.be/d3MFNtsxTxM)
 
 
 ## User Story
