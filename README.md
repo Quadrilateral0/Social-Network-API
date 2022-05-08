@@ -18,7 +18,7 @@ npm i
 ```
 seed the database with:
 ```bash
-npm i
+npm run seed
 ```
 and invoke the program by using:
 
