@@ -1,18 +1,16 @@
-const { Schema, model } = require('mongoose');
+const { Schema, Types, model } = require('mongoose');
 
 const userSchema = new Schema(
   {
-    id: {
+    userId: {
       type: Schema.Types.ObjectId,
       default: () => new Types.ObjectId(),
     },
-    name: {
+    username: {
       type: String,
       trim: true,
       required: true,
       unique: true,
-      maxlength: 12,
-      minlength: 3,
     },
     email: {
       type: String,
@@ -20,10 +18,10 @@ const userSchema = new Schema(
       unique: true,
       match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, "Please enter a valid email address."],
     },
-    // createdAt: {
-    //   type: Date,
-    //   default: Date.now,
-    // },
+    createdAt: {
+      type: Date,
+      default: Date.now,
+    },
     thoughts: [
       {
         type: Schema.Types.ObjectId,
