@@ -46,11 +46,11 @@ const userSchema = new Schema(
   }
 );
 
-userSchema.virtual("friendCount").get(function(){
+userSchema.virtual('friendCount').get(function(){
   return this.friends.length;
 });
 
-const username = db.model('username', userSchema);
+const user = model('user', userSchema);
 
 // const username = new Username();
 // username.save(function(error) {
@@ -62,4 +62,4 @@ const username = db.model('username', userSchema);
 //     'Path `name` is required.');
 // });
 
-module.exports = username;
+module.exports = user;
