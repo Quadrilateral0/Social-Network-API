@@ -26,7 +26,7 @@ and invoke the program by using:
 npm start
 ```
 
-[![Video demo of completed project](main/images/API-demo.png)](https://youtu.be/d3MFNtsxTxM)
+[![Video demo of completed project](images/API-demo.png)](https://youtu.be/d3MFNtsxTxM)
 
 
 ## User Story
